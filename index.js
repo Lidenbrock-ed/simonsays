@@ -2,13 +2,13 @@ const blue = document.getElementById('blue');
 const violet = document.getElementById('violet');
 const orange = document.getElementById('orange');
 const green = document.getElementById('green');
-const LASTLEVEL = 2;
+const LASTLEVEL = 10;
 class Game {
     constructor(){
-        this.init()// this.init.bind(this)
+        this.init()
         this.generateSequence()
         this.nextLevel()
-        setTimeout(this.nextLevel(), 500)
+        setTimeout(this.nextLevel(), 700)
     }
     init(){
         this.choiseColor = this.choiseColor.bind(this);
@@ -109,6 +109,7 @@ class Game {
         }
     }
     winGame(){
+        showConfetti();
         alert("Congratulations!","You win the game", "success")
         this.init()
     }
@@ -116,6 +117,20 @@ class Game {
         alert("Sorry!","You lose the game", "error")
         this.init()    
     }
+}
+function showConfetti(){
+    const start = () => {
+        setTimeout(function() {
+            confetti.start()
+        }, 500);
+    };
+    const stop = () => {
+        setTimeout(function() {
+            confetti.stop()
+        }, 5000); 
+    };
+    start();
+    stop();
 }
 function startGame(){
     window.newGame = new Game();
