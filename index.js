@@ -2,7 +2,8 @@ const blue = document.getElementById('blue');
 const violet = document.getElementById('violet');
 const orange = document.getElementById('orange');
 const green = document.getElementById('green');
-const LASTLEVEL = 10;
+const button = document.getElementById('startButtom');
+const LASTLEVEL = 3;
 class Game {
     constructor(){
         this.init()
@@ -25,6 +26,7 @@ class Game {
     toggleStartButtom(){
         if(startButtom.classList.contains('hide')){
             startButtom.classList.remove('hide');
+            startButtom.classList.remove('message');
         }else {
             startButtom.classList.add('hide');
         }
@@ -110,12 +112,12 @@ class Game {
     }
     winGame(){
         showConfetti();
-        alert("Congratulations!","You win the game", "success")
-        this.init()
+        const message = "!Congratulations! You win the game 🎉. Please click here to play again";
+        showMessage(message, true);
     }
     loseGame(){
-        alert("Sorry!","You lose the game", "error")
-        this.init()    
+        const message = "!Sorry! You lose the game 💔. Please click here to play again";
+        showMessage(message);
     }
 }
 function showConfetti(){
@@ -131,6 +133,18 @@ function showConfetti(){
     };
     start();
     stop();
+}
+function showMessage(text, winGame = false){
+    if(winGame){
+        startButtom.classList.add('win_message');
+        startButtom.classList.remove('lose_message');
+    } else {
+        startButtom.classList.add('lose_message');
+        startButtom.classList.remove('win_message');
+    }
+    startButtom.innerText = text;
+    startButtom.classList.remove('hide');
+    
 }
 function startGame(){
     window.newGame = new Game();
