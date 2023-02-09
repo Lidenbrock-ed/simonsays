@@ -3,7 +3,7 @@ const violet = document.getElementById('violet');
 const orange = document.getElementById('orange');
 const green = document.getElementById('green');
 const button = document.getElementById('startButtom');
-const LASTLEVEL = 3;
+const LASTLEVEL = 10;
 class Game {
     constructor(){
         this.init()
@@ -26,7 +26,6 @@ class Game {
     toggleStartButtom(){
         if(startButtom.classList.contains('hide')){
             startButtom.classList.remove('hide');
-            startButtom.classList.remove('message');
         }else {
             startButtom.classList.add('hide');
         }
